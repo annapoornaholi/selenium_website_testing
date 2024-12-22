@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple E-commerce Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            width: 200px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product h2 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .add-to-cart-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .add-to-cart-button:hover {
+            background-color: #45a049;
+        }
+
+        #cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Simple E-commerce Website</h1>
+        <a href="login.html" id="login-button">Login</a>
+        <a href="#" id="cart">Cart (0)</a>
+    </header>
+
+    <div class="product-container">
+        <div class="product" data-id="1">
+            <img src="https://via.placeholder.com/150" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>$10.00</p>
+            <button class="add-to-cart-button">Add to Cart</button>
+        </div>
+        <div class="product" data-id="2">
+            <img src="https://via.placeholder.com/150" alt="Product 2">
+            <h2>Product 2</h2>
+            <p>$20.00</p>
+            <button class="add-to-cart-button">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        const cartButton = document.getElementById('cart');
+        cartButton.addEventListener('click', () => {
+            window.location.href = 'checkout.html';
+        });
+    </script>
+</body>
+</html>

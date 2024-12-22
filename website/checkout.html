@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .checkout-form {
+            background-color: white;
+            padding: 20px;
+            margin: 100px auto;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .checkout-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .checkout-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Checkout</h1>
+    <form class="checkout-form">
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Address" required>
+        <input type="text" placeholder="City" required>
+        <input type="text" placeholder="ZIP Code" required>
+        <button type="submit">Place Order</button>
+    </form>
+</body>
+</html>
