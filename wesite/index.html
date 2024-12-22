@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple E-commerce Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            width: 200px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product h2 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .add-to-cart-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .add-to-cart-button:hover {
+            background-color: #45a049;
+        }
+
+        #cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #cart-items {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        #cart-items ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #cart-items ul li {
+            margin-bottom: 10px;
+        }
+
+        #checkout-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        #checkout-button:hover {
+            background-color: #0056b3;
+        }
+
+        .login-form, .checkout-form {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        .login-form input, .checkout-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .login-form button, .checkout-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .login-form button:hover, .checkout-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Simple E-commerce Website</h1>
+        <a href="#" id="login-button">Login</a>
+        <a href="#" id="logout-button" style="display:none;">Logout</a>
+        <a href="#" id="cart">Cart (0)</a>
+    </header>
+
+    <div class="product-container">
+        <div class="product" data-id="1">
+            <img src="https://via.placeholder.com/150" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>$10.00</p>
+            <button class="add-to-cart-button">Add to Cart</button>
+        </div>
+        <div class="product" data-id="2">
+            <img src="https://via.placeholder.com/150" alt="Product 2">
+            <h2>Product 2</h2>
+            <p>$20.00</p>
+            <button class="add-to-cart-button">Add to Cart</button>
+        </div>
+        <div class="product" data-id="3">
+            <img src="https://via.placeholder.com/150" alt="Product 3">
+            <h2>Product 3</h2>
+            <p>$30.00</p>
+            <button class="add-to-cart-button">Add to Cart</button>
+        </div>
+        <div class="product" data-id="4">
+            <img src="https://via.placeholder.com/150" alt="Product 4">
+            <h2>Product 4</h2>
+            <p>$40.00</p>
+            <button class="add-to-cart-button">Add to Cart</button>
+        </div>
+        <div class="product" data-id="5">
+            <img src="https://via.placeholder.com/150" alt="Product 5">
+            <h2>Product 5</h2>
+            <p>$50.00</p>
+            <button class="add-to-cart-button">Add to Cart</button>
+        </div>
+    </div>
+
+    <div id="cart-items">
+        <h3>Cart Items</h3>
+        <ul id="cart-list">
+            <!-- Cart items will be listed here -->
+        </ul>
+        <button id="checkout-button">Checkout</button>
+    </div>
+
+    <div class="login-form" id="login-form">
+        <h3>Login</h3>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button id="submit-login">Login</button>
+    </div>
+
+    <div class="checkout-form" id="checkout-form">
+        <h3>Checkout</h3>
+        <input type="text" id="shipping-name" placeholder="Full Name">
+        <input type="text" id="shipping-address" placeholder="Address">
+        <input type="text" id="shipping-city" placeholder="City">
+        <input type="text" id="shipping-zip" placeholder="ZIP Code">
+        <button id="place-order-button">Place Order</button>
+    </div>
+
+    <script>
+        let cart = [];
+        const cartCount = document.getElementById('cart');
+        const cartItems = document.getElementById('cart-items');
+        const cartList = document.getElementById('cart-list');
+        const checkoutButton = document.getElementById('checkout-button');
+        const loginButton = document.getElementById('login-button');
+        const logoutButton = document.getElementById('logout-button');
+        const loginForm = document.getElementById('login-form');
+        const submitLogin = document.getElementById('submit-login');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const checkoutForm = document.getElementById('checkout-form');
+        const placeOrderButton = document.getElementById('place-order-button');
+
+        document.querySelectorAll('.add-to-cart-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const product = e.target.closest('.product');
+                const productId = product.getAttribute('data-id');
+                const productName = product.querySelector('h2').textContent;
+                const productPrice = product.querySelector('p').textContent;
+
+                cart.push({ productId, productName, productPrice });
+                updateCart();
+            });
+        });
+
+        function updateCart() {
+            cartCount.textContent = `Cart (${cart.length})`;
+            cartList.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.productName} - ${item.productPrice}`;
+                cartList.appendChild(li);
+            });
+            if (cart.length > 0) {
+                cartItems.style.display = 'block';
+            } else {
+                cartItems.style.display = 'none';
+            }
+        }
+
+        checkoutButton.addEventListener('click', () => {
+            cartItems.style.display = 'none';
+            checkoutForm.style.display = 'block';
+        });
+
+        loginButton.addEventListener('click', () => {
+            loginForm.style.display = 'block';
+        });
+
+        logoutButton.addEventListener('click', () => {
+            logoutButton.style.display = 'none';
+            loginButton.style.display = 'block';
+        });
+
+        submitLogin.addEventListener('click', () => {
+            if (usernameInput.value === 'testuser' && passwordInput.value === 'password123') {
+                loginButton.style.display = 'none';
+                logoutButton.style.display = 'block';
+                loginForm.style.display = 'none';
+            } else {
+                alert('Invalid credentials!');
+            }
+        });
+
+        placeOrderButton.addEventListener('click', () => {
+            alert('Order placed successfully!');
+            checkoutForm.style.display = 'none';
+            cart = [];
+            updateCart();
+        });
+    </script>
+</body>
+</html>
